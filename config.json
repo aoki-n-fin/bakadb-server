@@ -1,0 +1,7 @@
+{
+  "port": 6969,
+  "connectionTimeout": 30,
+  "allowLocalhostUnauthorizedAccess": true,
+
+  "iHateTrailingCommasInJSON": true
+}

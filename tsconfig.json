@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"target": "ES6",
+		"module": "CommonJS",
+		"lib": [
+			"ES2020"
+		],
+		"resolveJsonModule": true,
+		// "noUnusedLocals": true,
+		// "noUnusedParameters": true,
+		"skipLibCheck": true,
+		"incremental": true,
+		"removeComments": true,
+		"moduleResolution": "node",
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"outDir": "dist",
+		"strictNullChecks": true,
+		"allowSyntheticDefaultImports": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [ "src/*" ]
+		}
+	},
+	"include": [
+		"**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
+}

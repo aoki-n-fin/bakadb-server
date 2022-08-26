@@ -1,0 +1,33 @@
+{
+  "name": "bakadb-server",
+  "version": "1.0.0",
+  "description": "BakaDB TCP Server",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AokiAreAoki/bakadb-server.git"
+  },
+  "keywords": [
+    "baka",
+    "db",
+    "bakadb",
+    "server"
+  ],
+  "author": "Aoki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AokiAreAoki/bakadb-server/issues"
+  },
+  "homepage": "https://github.com/AokiAreAoki/bakadb-server#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.13",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.184",
+    "lodash": "^4.17.21"
+  }
+}

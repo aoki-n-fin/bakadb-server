@@ -1,0 +1,1 @@
+{"version":3,"file":"bakadb.d.ts","sourceRoot":"","sources":["../../src/bakadb.ts"],"names":[],"mappings":"AASA,cAAM,MAAM;IACX,OAAO,CAAC,EAAE,CAAa;gBAEV,IAAI,GAAE,MAAgB;IAUnC,GAAG,CAAE,IAAI,EAAE,MAAM,EAAE,KAAK,EAAE,GAAG;IAI7B,GAAG,CAAE,IAAI,EAAE,MAAM,EAAE,QAAQ,EAAE,OAAO;CAGpC;AAED,eAAe,MAAM,CAAA"}
