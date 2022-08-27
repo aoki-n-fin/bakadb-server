@@ -2,8 +2,6 @@
 
 const path = require('path')
 
-console.log(process.env)
-
 function merge(object1, object2)
 {
 	for (const key in object2)
@@ -18,23 +16,25 @@ function merge(object1, object2)
 let global = { }
 let local = { }
 
-try
-{
-	global = require(
-		path.join(process.cwd(), '.eslintrc.global.json')
-	)
-}
-catch
-{ }
+if (process.env.ESL_DEV_GLOBAL !== '0')
+	try
+	{
+		global = require(
+			path.join(process.cwd(), '.eslintrc.global.json')
+		)
+	}
+	catch
+	{ }
 
-try
-{
-	local = require(
-		path.join(process.cwd(), '.eslintrc.local.json')
-	)
-}
-catch
-{ }
+if (process.env.ESL_DEV_LOCAL !== '0')
+	try
+	{
+		local = require(
+			path.join(process.cwd(), '.eslintrc.local.json')
+		)
+	}
+	catch
+	{ }
 
 
 module.exports = merge(global, local)
