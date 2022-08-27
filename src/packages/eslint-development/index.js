@@ -2,8 +2,6 @@
 
 const path = require('path')
 
-console.log(process.env.ESL_DEV_LOCAL)
-
 function merge(object1, object2)
 {
 	for (const key in object2)
