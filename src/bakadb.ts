@@ -1,6 +1,6 @@
-import print from './print-table'
-import Querier from './querier'
-import { logger } from './index'
+import print from '@/print-table'
+import Querier from '@/querier'
+import { logger } from '@/index'
 
 interface Value {
 	value: string
@@ -8,29 +8,35 @@ interface Value {
 
 type Entity = { [key: string]: Entity } | Value
 
-function resolvePath( path: string[] ){
+function resolvePath( path: string[] )
+{
 	return path
 		.map( e => e.toString().split( /[\/\.]+/ ) )
 		.flat(1)
 		.filter( e => !!e )
 }
 
-class BakaDB {
+class BakaDB 
+{
 	private db: Entity = {}
+
 	public readonly querier = new Querier( this )
 
-	constructor( path: string = './bdb' ){
+	constructor( path = './bdb' )
+	{
 		// todo
 		logger.log( 'bakadb construction' )
 		logger.evaluations.set( 'db', () => print( this.db ) )
 	}
 	
-	get( ...path: string[] ){
+	get( ...path: string[] )
+	{
 		let value = this.db
 		path = resolvePath( path )
 
-		for( let i = 0; i < path.length; ++i ){
-			let prop = path[i]
+		for( let i = 0; i < path.length; ++i )
+		{
+			const prop = path[i]
 			if( !prop ) continue
 
 			if( typeof value[prop] === 'undefined' )
@@ -45,18 +51,20 @@ class BakaDB {
 		return value
 	}
 
-	set( ...path: string[] ){
-		let value = path.pop()
+	set( ...path: string[] )
+	{
+		const value = path.pop()
 		let object = this.db
 		path = resolvePath( path )
 
-		let key = path.pop()
+		const key = path.pop()
 		
 		if( !key )
 			return
 
-		for( let i = 0; i < path.length; ++i ){
-			let prop = path[i]
+		for( let i = 0; i < path.length; ++i )
+		{
+			const prop = path[i]
 			if( !prop ) continue
 
 			if( typeof object[prop] === 'undefined' )
@@ -68,20 +76,24 @@ class BakaDB {
 		object[key] = value
 	}
 
-	delete( ...path: string[] ){
+	delete( ...path: string[] )
+	{
 		this._delete( this.db, resolvePath( path ) )
 	}
 
-	private _delete( object: Entity, path: string[] ){
+	private _delete( object: Entity, path: string[] )
+	{
 		if( path.length === 0 )
 			return false
 
-		let key = path.shift()!
+		const key = path.shift()!
 
-		if( typeof object[key] !== 'undefined' ){
+		if( typeof object[key] !== 'undefined' )
+		{
 			if( path.length === 0 )
 				delete object[key]
-			else {
+			else 
+			{
 				if( this._delete( object[key], path ) )
 					delete object[key]
 			}

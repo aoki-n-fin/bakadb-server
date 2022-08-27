@@ -4,9 +4,15 @@
   "description": "BakaDB TCP Server",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "eslint ./src ./*.json --ext=.ts,.js,.json",
-    "format": "eslint ./src ./*.json --ext .ts,.js,.json --fix",
-    "prepare": "husky install"
+    "initialize": "npm i && husky install",
+    "lint:local": "eslint ./src ./*.json --ext=.ts,.js,.json",
+    "lint:global": "cross-env ESL_DEV_LOCAL=0 npm run lint:local",
+    "format:local": "eslint ./src ./*.json --ext .ts,.js,.json --fix",
+    "format:global": "cross-env ESL_DEV_LOCAL=0 npm run format:local",
+    "dev": "nodemon",
+    "dev:main": "ts-node src/main.ts",
+    "build": "rimraf dist && npx tsc",
+    "build:main": "node dist/main.js"
   },
   "repository": {
     "type": "git",
@@ -24,22 +30,29 @@
     "url": "https://github.com/aoki-n-fin/bakadb-server/issues"
   },
   "homepage": "https://github.com/aoki-n-fin/bakadb-server#readme",
+  "_moduleAliases": {
+    "@/": "src/"
+  },
   "devDependencies": {
     "@types/lodash": "^4.14.184",
     "@types/node": "^18.7.13",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.23.0",
     "eslint-config-development": "file:src/packages/eslint-development",
     "eslint-config-standard-with-typescript": "^22.0.0",
-    "eslint-plugin-development": "file:src/packages/eslint-development",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-n": "^15.2.5",
     "eslint-plugin-promise": "^6.0.1",
     "husky": "^8.0.1",
+    "nodemon": "^2.0.19",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.2"
   },
   "dependencies": {
+    "better-module-alias": "^1.1.0",
     "lodash": "^4.17.21"
   }
 }
