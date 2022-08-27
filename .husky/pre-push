@@ -1,2 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+
+ESL_DEV_LOCAL=0 npm run format
