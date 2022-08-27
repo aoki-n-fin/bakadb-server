@@ -5,3 +5,4 @@ ESL_DEV_LOCAL=0 npm run format
 
 git add .
 git commit --amend --no-edit
+npm run format
