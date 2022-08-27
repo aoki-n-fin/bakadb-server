@@ -1,16 +1,21 @@
 
-export default class LoggerDebugger {
+export default class LoggerDebugger 
+{
 	public logLimit = 10
+
 	public evaluations: Map<string, () => string> = new Map()
 	
-    private interval: NodeJS.Timer
+	private interval: NodeJS.Timer
+
 	private logs: string[] = Array( this.logLimit ).fill( '' )
 
-    constructor(){
-        this.interval = setInterval( () => this.updateLog(), 1337 )
-    }
+	constructor()
+	{
+		this.interval = setInterval( () => this.updateLog(), 1337 )
+	}
 
-	log( ...log: any[] ){
+	log( ...log: any[] )
+	{
 		this.logs.push( log
 			.map( v => String(v) )
 			.join( ' ' )
@@ -19,7 +24,8 @@ export default class LoggerDebugger {
 		this.updateLog()
 	}
 
-	updateLog(){
+	updateLog()
+	{
 		console.clear()
 
 		console.log( 'log:' )
@@ -29,7 +35,8 @@ export default class LoggerDebugger {
 		this.evaluations.forEach( ( e, k ) => console.log( `${k}: ${e()}` ) )
 	}
 	
-	destroy(){
+	destroy()
+	{
 		clearInterval( this.interval )
 	}
 }

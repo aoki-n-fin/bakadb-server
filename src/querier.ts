@@ -1,26 +1,30 @@
-import { logger } from ".";
-import BakaDB from "./bakadb";
+import { logger } from '.'
+import BakaDB from '@/bakadb'
 
-export default class Querier {
+export default class Querier 
+{
 	private bakadb: BakaDB
 
 	private methods = {
-		get: args => {
-			return this.bakadb.get( args[0] )
-		},
-		set: args => {
+		get: args => 
+			this.bakadb.get( args[0] ),
+		set: args => 
+		{
 			this.bakadb.set( args[0], args[1] )
 		},
-		delete: args => {
+		delete: args => 
+		{
 			this.bakadb.delete( args[0] )
 		},
 	}
 
-	constructor( bakadb: BakaDB ){
+	constructor( bakadb: BakaDB )
+	{
 		this.bakadb = bakadb
 	}
 
-	eval( query: string ): string | undefined {
+	eval( query: string ): string | undefined 
+	{
 		const args = this._parseArgs( query )
 		const methodName = args.shift()?.toLowerCase()
 
@@ -34,30 +38,41 @@ export default class Querier {
 		return result
 	}
 
-	private _parseArgs( string: string ): string[] {
-		let args: string[] = []
+	private _parseArgs( string: string ): string[] 
+	{
+		const args: string[] = []
 		let quotes = ''
 		let arg = ''
 		let pos = 0
 
-		for( let i = 0; i < string.length; ++i ){
-			let char = string[i]
+		for( let i = 0; i < string.length; ++i )
+		{
+			const char = string[i]
 
-			if( !quotes && /\s/.test( char ) ){
-				if( arg ){
+			if( !quotes && /\s/.test( char ) )
+			{
+				if( arg )
+				{
 					args.push( arg )
 					arg = ''
 				}
-			} else {
-				if( quotes ){
-					if( char == quotes ){
+			}
+			else 
+			{
+				if( quotes )
+				{
+					if( char == quotes )
+					{
 						args.push( arg )
 						arg = ''
 						quotes = ''
 						continue
 					}
-				} else {
-					 if( char == '"' || char == "'" ){
+				}
+				else 
+				{
+					if( char == '"' || char == "'" )
+					{
 						quotes = char
 						pos = i
 						continue
