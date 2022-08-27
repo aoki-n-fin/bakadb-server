@@ -9,29 +9,29 @@ type Entity = { [key: string]: Entity } | Value
 
 class BakaDB 
 {
-	private db: Entity = {}
+  private db: Entity = {}
 
-	constructor( path = './bdb' )
-	{
-		// todo
-		console.log( 'bakadb construction' )
+  constructor( path = './bdb' )
+  {
+    // todo
+    console.log( 'bakadb construction' )
 
-		setInterval( () => 
-		{
-			console.clear()
-			console.log( 'db: ' + print( this.db ) )
-		}, 1337 )
-	}
+    setInterval( () => 
+    {
+      console.clear()
+      console.log( 'db: ' + print( this.db ) )
+    }, 1337 )
+  }
 
-	set( path: string, value: any )
-	{
-		set( this.db, path.replace( /\/+/g, '.' ), value )
-	}
+  set( path: string, value: any )
+  {
+    set( this.db, path.replace( /\/+/g, '.' ), value )
+  }
 	
-	get( path: string, fallback: unknown )
-	{
-		return get( this.db, path.replace( /\/+/g, '.' ), fallback )
-	}
+  get( path: string, fallback: unknown )
+  {
+    return get( this.db, path.replace( /\/+/g, '.' ), fallback )
+  }
 }
 
 export default BakaDB
