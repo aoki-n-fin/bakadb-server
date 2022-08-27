@@ -10,9 +10,9 @@
     "format:local": "eslint ./src ./*.json --ext .ts,.js,.json --fix",
     "format:global": "cross-env ESL_DEV_LOCAL=0 npm run format:local",
     "dev": "nodemon",
-    "dev:main": "ts-node src/main.ts",
+    "dev:main": "ts-node src/index.ts",
     "build": "rimraf dist && npx tsc",
-    "build:main": "node dist/main.js"
+    "build:main": "node dist/index.js"
   },
   "repository": {
     "type": "git",
